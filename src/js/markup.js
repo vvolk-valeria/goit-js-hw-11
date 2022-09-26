@@ -2,9 +2,8 @@ const galleryEl = document.querySelector('.gallery');
 
 export function makeMarkup(images) {
   const markup = images.map(({webformatURL, tags, likes, views, comments, downloads, largeImageURL}) =>
-    `<a class="img-link" href="${largeImageURL}">
-      <div class="photo-card">
-      <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+    `<div class="photo-card"><a class="img-link" href="${largeImageURL}">
+      <img src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
       <div class="info">
           <p class="info-item">
           <b>Likes </b><span>${likes}</span>
@@ -19,8 +18,7 @@ export function makeMarkup(images) {
           <b>Downloads </b><span>${downloads}</span>
           </p>
       </div>
-      </div>
-    </a>`
+      </div>`
   ).join('');
   // console.log(markup);
   addMarkup(galleryEl, markup);

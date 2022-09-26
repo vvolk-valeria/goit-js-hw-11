@@ -16,6 +16,7 @@ const refs = {
 
 refs.formEl.addEventListener('submit', onFormClick);
 refs.btnLoadMoreEl.addEventListener('click', LoadMoreClick);
+refs.btnLoadMoreEl.addEventListener('click', smoothScroll);
 
 refs.btnLoadMoreEl.classList.add('visually-hidden');
 
@@ -73,6 +74,7 @@ async function loadImg(searchQuery) {
       refs.btnLoadMoreEl.classList.add('visually-hidden');
 }
     makeMarkup(data.hits);
+    lightbox.refresh();
     
   } catch (error) {
      console.log(error)
@@ -81,21 +83,13 @@ async function loadImg(searchQuery) {
 }
 
 
-
-var lightbox = new SimpleLightbox('.gallery a'
-  // , {
-  //   captionsData: 'alt',
-  //   captionPosition: 'bottom',
-  //   captionDelay: 100,
-  // }
+//* для отображения большой версии изображений
+var lightbox = new SimpleLightbox('.photo-card a', {
+    // captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250,
+  }
 );
-
-
-let gallery = new SimpleLightbox('.gallery a');
-
-gallery.on('show.simplelightbox', function () {
-	// do something…
-});
 
 
 //* Системные сообщения
@@ -118,3 +112,17 @@ const options = {
   width: '360px'
 }
   
+function smoothScroll() {
+   console.log('click');
+  const { height: cardHeight } = document
+  .querySelector(".gallery")
+  .firstElementChild.getBoundingClientRect();
+   console.log('cardHeight', cardHeight);
+window.scrollBy({
+  top: cardHeight * 2,
+  behavior: "smooth",
+});
+}
+
+
+// scroll-behavior: smooth
