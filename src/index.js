@@ -3,10 +3,11 @@ import {getImg} from './js/api'
 import { makeMarkup, resetMarkup } from './js/markup'
 import { messageNoImages, messageMustFill, messageEndImages, messageFoundPictures } from "./js/messages";
 import { lightbox } from "./js/simpleLightbox";
+import { registerIntersectionObserver } from "./js/if";
 let pageNumber;
 const LOCAL_KEY = 'searchQuery';
 
-const refs = {
+export const refs = {
   formEl: document.querySelector('#search-form'),
   btnLoadMoreEl: document.querySelector('.load-more'),
 }
@@ -22,7 +23,7 @@ function onFormClick(evt) {
     // if (evt.target.tagName !== 'BUTTON') {
     // return;
     // } 
-  resetMarkup();
+    resetMarkup();
 
     const searchQuery = evt.currentTarget.elements.searchQuery.value;
   if (searchQuery === '') {
@@ -36,7 +37,7 @@ function onFormClick(evt) {
 }
 
 
-function LoadMoreClick() {
+export function LoadMoreClick() {
   const searchQueryFromLocalStorage = localStorage.getItem(LOCAL_KEY);
   // console.log(LOCAL_KEY, searchQueryFromLocalStorage);
   loadImg(searchQueryFromLocalStorage, pageNumber+=1);
@@ -59,11 +60,14 @@ async function loadImg(searchQuery, pageNumber) {
       if (page === 1) {
         messageFoundPictures(data.totalHits); 
       }
+      // if (page > 0) {
+      //   registerIntersectionObserver();          
+      // }
       if (page > 1) {
         makeMarkup(data.hits);
         lightbox.refresh();
         smoothScroll();
-    } 
+      } 
         if (page >= data.totalHits / data.hits.length ||  data.hits.length === 0) {
         messageEndImages();
         refs.btnLoadMoreEl.classList.add('visually-hidden');
@@ -82,8 +86,14 @@ function smoothScroll() {
   .querySelector(".gallery")
   .firstElementChild.getBoundingClientRect();
 window.scrollBy({
-  top: cardHeight * 1,
+  top: cardHeight * 1.3,
   behavior: "smooth",
 });
 }
+
+
+
+//=============
+
+
 
