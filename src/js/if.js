@@ -7,7 +7,6 @@ export function registerIntersectionObserver() {
   const onObserver = (entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      console.log('push');
       LoadMoreClick();
     }
        
