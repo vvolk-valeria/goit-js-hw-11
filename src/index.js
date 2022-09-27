@@ -48,6 +48,7 @@ async function loadImg(searchQuery, pageNumber) {
     const { response:{data}, page } = await getImg(searchQuery, pageNumber);
     if (data.totalHits === 0) {
       messageNoImages();
+      refs.btnLoadMoreEl.classList.add('visually-hidden');
       return;
     }
 
