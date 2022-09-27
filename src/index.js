@@ -13,7 +13,7 @@ export const refs = {
 }
 
 refs.formEl.addEventListener('submit', onFormClick);
-refs.btnLoadMoreEl.addEventListener('click', LoadMoreClick);
+refs.btnLoadMoreEl.addEventListener('click', loadMoreClick);
 
 refs.btnLoadMoreEl.classList.add('visually-hidden');
 
@@ -23,9 +23,10 @@ function onFormClick(evt) {
     // if (evt.target.tagName !== 'BUTTON') {
     // return;
     // } 
-    resetMarkup();
 
+    resetMarkup();
     const searchQuery = evt.currentTarget.elements.searchQuery.value;
+    localStorage.setItem(LOCAL_KEY, searchQuery);
   if (searchQuery === '') {
     messageMustFill();
     localStorage.removeItem(LOCAL_KEY);
@@ -37,7 +38,7 @@ function onFormClick(evt) {
 }
 
 
-export function LoadMoreClick() {
+export function loadMoreClick() {
   const searchQueryFromLocalStorage = localStorage.getItem(LOCAL_KEY);
   // console.log(LOCAL_KEY, searchQueryFromLocalStorage);
   loadImg(searchQueryFromLocalStorage, pageNumber+=1);
@@ -54,14 +55,12 @@ async function loadImg(searchQuery, pageNumber) {
     }
 
     refs.btnLoadMoreEl.classList.remove('visually-hidden');
-    localStorage.setItem(LOCAL_KEY, searchQuery);
-    // refs.formEl.elements.searchQuery.value = '';
-    // console.log("page", page);
       if (page === 1) {
         messageFoundPictures(data.totalHits); 
       }
       // if (page > 0) {
-      //   registerIntersectionObserver();          
+      //   registerIntersectionObserver(); 
+      //   refs.btnLoadMoreEl.classList.add('visually-hidden');
       // }
       if (page > 1) {
         makeMarkup(data.hits);

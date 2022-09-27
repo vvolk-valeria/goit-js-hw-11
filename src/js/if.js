@@ -1,4 +1,4 @@
-import { refs, LoadMoreClick } from "./../index";
+import { refs, loadMoreClick } from "./../index";
 
 //* Бесконечный скролл
 
@@ -7,7 +7,7 @@ export function registerIntersectionObserver() {
   const onObserver = (entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      LoadMoreClick();
+      loadMoreClick();
     }
        
   })

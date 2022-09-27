@@ -26,6 +26,7 @@ export function makeMarkup(images) {
 
 export function resetMarkup() {
   galleryEl.innerHTML = '';
+  console.log('resetMarkup');
 }
 
 function addMarkup(elem, markup) {
