@@ -28,14 +28,14 @@ body {
     width: 100vw;
     height: 100vh;
     background-repeat: no-repeat;
-background: linear-gradient(0deg, rgba(133, 237, 218, 1) 12%, rgba(224, 233, 72, 1) 31%, rgba(224, 118, 227, 0.938813025210084) 48%, rgba(215, 130, 226, 0.8099614845938375) 63%, rgba(133, 237, 218, 0.8379726890756303) 81%, rgba(133, 237, 218, 1) 93%);
+    background: linear-gradient(0deg, rgba(133, 237, 218, 1) 12%, rgba(224, 233, 72, 1) 31%, rgba(224, 118, 227, 0.938813025210084) 48%, rgba(215, 130, 226, 0.8099614845938375) 63%, rgba(133, 237, 218, 0.8379726890756303) 81%, rgba(133, 237, 218, 1) 93%);
 }
 
 .container {
-max-width: 1400px;
+    max-width: 1400px;
     margin-right: auto;
     margin-left: auto;
-padding-top: 95px;
+    padding-top: 95px;
     padding-bottom: 20px;
     padding-left: 25px;
     padding-right: 25px;
@@ -44,60 +44,60 @@ padding-top: 95px;
 
 
 .search-form {
-position: fixed;
-top: 0;
-width: 100vw;
-padding-top: 20px;
-padding-bottom: 20px;
-text-align: center;
-
-background: linear-gradient(0deg, rgba(93, 150, 175, 0.91) 0%, 
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    background: linear-gradient(0deg, rgba(93, 150, 175, 0.91) 0%, 
 rgba(101, 232, 236, 0.79) 72%);
-box-shadow: 0px 22px 10px -13px rgba(146, 207, 235, 0.75);
+    box-shadow: 0px 22px 10px -13px rgba(146, 207, 235, 0.75);
 }
 
 
 .form-input {
-padding: 10px 10px;
-border-radius: 5px;
-border: 2px solid rgb(108, 178, 235);
-min-width: 350px;
-outline: transparent;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(108, 178, 235);
+    min-width: 350px;
+    outline: transparent;
 }
 
 button {
-        padding: 10px 10px;
-            border-radius: 5px;
-            border: 2px solid rgb(108, 178, 235);
-    outline: transparent;    
-
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(108, 178, 235);
+    outline: transparent;   
+    cursor: pointer; 
 }
+
+button:hover,
+button:focus {
+    border: 2px solid rgb(53, 16, 214);
+    color: #ffffff;
+    background: rgb(148, 230, 225);
+}
+
 .button-submit {
     padding: 10px 10px;
     border-radius: 5px;
     border: 2px solid rgb(108, 178, 235);
-
 }
 
 .gallery {
- 
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
-
-
-    
 }
 
 .img-link {
-    
 
 }
 
 .photo-card {
-text-decoration: none;
+    text-decoration: none;
     color: black;
     display: block;
     height: auto;
@@ -105,7 +105,6 @@ text-decoration: none;
     overflow: hidden;
     box-shadow: 0px 1px 7px 3px rgba(29, 16, 102, 0.75);
     background: linear-gradient(0deg, rgba(195, 34, 191, 1) 0%, rgba(45, 234, 253, 0.88) 32%);
-
 }
 
 @media screen and (min-width: 390px) {
@@ -132,26 +131,24 @@ text-decoration: none;
 }
 
 .info {
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 10px;
-flex-grow: 1;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
 }
 
 .info-item {
- display: flex;
- flex-direction: column;
- padding: 5px;
-align-items: center;
-
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    align-items: center;
 }
 
 .load-more {
-display: block;
-min-width: 250px;
-margin-top: 25px;
-margin-left: auto;
-margin-right: auto;
+    display: block;
+    min-width: 250px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
