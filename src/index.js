@@ -1,7 +1,7 @@
 
 import {getImg} from './js/api'
 import { makeMarkup, resetMarkup } from './js/markup'
-import { messageNoImages, messageMustFill, messageEndImages, messageFoundPictures } from "./js/messages";
+import { showMessageNoImages, showMessageMustFill, showMessageEndImages, showMessageFoundPictures } from "./js/messages";
 import { lightbox } from "./js/simpleLightbox";
 import { registerIntersectionObserver } from "./js/if";
 let pageNumber;
@@ -28,7 +28,7 @@ function onFormClick(evt) {
     const searchQuery = evt.currentTarget.elements.searchQuery.value;
     localStorage.setItem(LOCAL_KEY, searchQuery);
   if (searchQuery === '') {
-    messageMustFill();
+    showMessageMustFill();
     localStorage.removeItem(LOCAL_KEY);
     refs.btnLoadMoreEl.classList.add('visually-hidden');
     return;
@@ -49,14 +49,16 @@ async function loadImg(searchQuery, pageNumber) {
   try {
     const { response:{data}, page } = await getImg(searchQuery, pageNumber);
     if (data.totalHits === 0) {
-      messageNoImages();
+      showMessageNoImages();
       refs.btnLoadMoreEl.classList.add('visually-hidden');
       return;
     }
 
     refs.btnLoadMoreEl.classList.remove('visually-hidden');
       if (page === 1) {
-        messageFoundPictures(data.totalHits); 
+        showMessageFoundPictures(data.totalHits); 
+        makeMarkup(data.hits);
+        lightbox.refresh();
       }
       // if (page > 0) {
       //   registerIntersectionObserver(); 
@@ -68,11 +70,11 @@ async function loadImg(searchQuery, pageNumber) {
         smoothScroll();
       } 
         if (page >= data.totalHits / data.hits.length ||  data.hits.length === 0) {
-        messageEndImages();
+        showMessageEndImages();
         refs.btnLoadMoreEl.classList.add('visually-hidden');
       }
-    makeMarkup(data.hits);
-    lightbox.refresh();
+    // makeMarkup(data.hits);
+    // lightbox.refresh();
   }
     catch (error) {
       console.log(error)

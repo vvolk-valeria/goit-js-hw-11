@@ -1,16 +1,16 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 //* Системные сообщения
-export function messageNoImages() {
+export function showMessageNoImages() {
   Notify.failure(`Sorry, there are no images matching your search query. Please try again.`, options);
 }
-export function messageMustFill() {
+export function showMessageMustFill() {
   Notify.info(`Fill in the field to search for images.`, options);
 }
-export function messageEndImages() {
+export function showMessageEndImages() {
   Notify.info(`We're sorry, but you've reached the end of search results.`, options);
 }
-export function messageFoundPictures(amount) {
+export function showMessageFoundPictures(amount) {
   Notify.success(`Hooray! We found ${amount} images.`, options);
 }
 

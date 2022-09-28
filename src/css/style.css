@@ -37,8 +37,8 @@ body {
     margin-left: auto;
     padding-top: 95px;
     padding-bottom: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
 
 }
 
@@ -114,19 +114,19 @@ button:focus {
 
 @media screen and (min-width: 725px) {
     .photo-card {
-        width: calc((100% - 25px * 1) / 2);
+        width: calc((100% - 20px * 1) / 2);
     }
 }
 
 @media screen and (min-width: 1080px) {
     .photo-card {
-    width: calc((100% - 25px * 2) / 3);
+    width: calc((100% - 20px * 2) / 3);
     }
 }
 
 @media screen and (min-width: 1200px) {
     .photo-card {
-    width: calc((100% - 25px * 3) / 4);
+    width: calc((100% - 20px * 3) / 4);
     }
 }
 
@@ -136,13 +136,18 @@ button:focus {
     align-items: center;
     gap: 10px;
     flex-grow: 1;
+    /* padding: 0 10px; */
 }
 
 .info-item {
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    /* padding: 5px; */
     align-items: center;
+}
+
+b {
+    margin-bottom: 5px;
 }
 
 .load-more {
